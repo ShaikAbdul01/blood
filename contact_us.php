@@ -92,29 +92,7 @@
                     </div>
                 </div>
             </div>
-            <?php
-            include 'connection.php';
-
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                // Get form data
-                $name = mysqli_real_escape_string($conn, $_POST['name']);
-                $email = mysqli_real_escape_string($conn, $_POST['email']);
-                $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-                $message = mysqli_real_escape_string($conn, $_POST['message']);
-
-                if (!empty($name) && !empty($email) && !empty($phone) && !empty($message)) {
-                    $query = "INSERT INTO contact_us (name, email, phone, message) VALUES ('$name', '$email', '$phone', '$message')";
-                    if (mysqli_query($conn, $query)) {
-                        echo "<p class='mt-4 text-green-500 text-center'>Your message has been sent successfully!</p>";
-                    } else {
-                        echo "<p class='mt-4 text-red-500 text-center'>Error: " . mysqli_error($conn) . "</p>";
-                    }
-                } else {
-                    echo "All fields are required!";
-                }
-                mysqli_close($conn);
-            }
-            ?>
+           
         </section>
 
     </main>

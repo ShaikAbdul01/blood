@@ -74,73 +74,8 @@
                 <img src="image/should1.jpg" alt="why should i donate blood">
             </div>
         </section>
-
-        <!-- Feedback form -->
-
-        <section>
-            <h3 class="text-5xl mb-12 font-semibold text-center">Feedback <span class="text-blood-primary">Form</span>
-            </h3>
-            <div class="max-w-xl mx-auto mt-16 flex w-full flex-col border rounded-lg bg-white p-8">
-                <h2 class="title-font mb-1 text-lg font-medium text-gray-900">Feedback</h2>
-                <p class="mb-5 leading-relaxed text-gray-600">If you had any issues or you liked our service, please
-                    share with us!</p>
-
-                <!-- Feedback Form -->
-                <form method="POST" action="">
-                    <div class="mb-4">
-                        <label for="name" class="text-sm leading-7 text-gray-600">Name</label>
-                        <input type="text" id="name" name="name"
-                            class="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-                            required />
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="text-sm leading-7 text-gray-600">Email</label>
-                        <input type="email" id="email" name="email"
-                            class="w-full rounded border border-gray-300 bg-white py-1 px-3 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-                            required />
-                    </div>
-                    <div class="mb-4">
-                        <label for="message" class="text-sm leading-7 text-gray-600">Feedback</label>
-                        <textarea id="message" name="feedback"
-                            class="h-32 w-full resize-none rounded border border-gray-300 bg-white py-1 px-3 text-base leading-6 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
-                            required></textarea>
-                    </div>
-                    <button type="submit" name="submit"
-                        class="rounded border-0 bg-blood-primary py-2 px-6 text-lg text-white hover:bg-gray-200 focus:outline-none">Send</button>
-                </form>
-
-                <?php
-                // Database connection
-                include 'connection.php';
-
-                if (isset($_POST['submit'])) {
-                    // Get form data
-                    $name = mysqli_real_escape_string($conn, $_POST['name']);
-                    $email = mysqli_real_escape_string($conn, $_POST['email']);
-                    $feedback = mysqli_real_escape_string($conn, $_POST['feedback']);
-
-                    // Insert data into reviews table
-                    $query = "INSERT INTO reviews (name, email, feedback) VALUES ('$name', '$email', '$feedback')";
-
-                    if (mysqli_query($conn, $query)) {
-                        echo "<p class='mt-4 text-green-500'>Thank you for your feedback!</p>";
-                    } else {
-                        echo "<p class='mt-4 text-red-500'>Error: " . mysqli_error($conn) . "</p>";
-                    }
-
-                    // Close connection
-                    mysqli_close($conn);
-                }
-                ?>
-            </div>
-        </section>
-
     </main>
-
-
     <?php include('footer.php') ?>
-
-
 </body>
 
 </html>
